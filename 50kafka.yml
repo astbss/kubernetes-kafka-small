@@ -1,3 +1,5 @@
+# mkdir -p /var/kafka/broker ; mkdir -p /var/kafka/zookeeper ; chmod -R 777 /var/kafka
+
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -95,12 +97,9 @@ spec:
         emptyDir: {}
       - name: extensions
         emptyDir: {}
-  volumeClaimTemplates:
-  - metadata:
-      name: data
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      storageClassName: kafka-broker
-      resources:
-        requests:
-          storage: 10Gi
+        
+      volumes:
+      - name: data
+        hostPath:
+          path: /var/kafka/broker       
+
