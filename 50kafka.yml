@@ -98,7 +98,7 @@ spec:
         emptyDir: {}
   volumeClaimTemplates:
   - metadata:
-      name: data
+      name: databroker
     spec:
       accessModes: [ "ReadWriteOnce" ]
       resources:
