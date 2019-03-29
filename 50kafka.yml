@@ -91,7 +91,7 @@ spec:
       volumes:
       - name: configmap
         configMap:
-          name: broker-config
+          name: broker-config2
       - name: config
         emptyDir: {}
       - name: extensions
