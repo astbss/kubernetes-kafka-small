@@ -86,7 +86,7 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /etc/kafka
-        - name: data
+        - name: databroker
           mountPath: /var/lib/kafka/data
       volumes:
       - name: configmap
