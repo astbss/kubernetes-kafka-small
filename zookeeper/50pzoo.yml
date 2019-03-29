@@ -1,3 +1,4 @@
+# https://github.com/Yolean/kubernetes-kafka/blob/master/zookeeper/50pzoo.yml
 # mkdir -p /var/kafka/broker ; mkdir -p /var/kafka/zookeeper ; chmod -R 777 /var/kafka
 # kubectl --namespace=kafka delete statefulsets pzoo
 # kubectl apply -f zookeeper/50pzoo.yml
@@ -30,10 +31,12 @@ spec:
         image: solsson/kafka-initutils@sha256:2cdb90ea514194d541c7b869ac15d2d530ca64889f56e270161fe4e5c3d076ea
         command: ['/bin/bash', '/etc/kafka/init.sh']
         volumeMounts:
+        - name: configmap
+          mountPath: /etc/kafka-configmap        
         - name: config
           mountPath: /etc/kafka
         - name: data
-          mountPath: /var/lib/zookeeper/data
+          mountPath: /var/lib/zookeeper
       containers:
       - name: zookeeper
         image: solsson/kafka:2.1.1@sha256:8bc8242c649c395ab79d76cc83b1052e63b4efea7f83547bf11eb3ef5ea6f8e1
@@ -70,11 +73,13 @@ spec:
         - name: config
           mountPath: /etc/kafka
         - name: data
-          mountPath: /var/lib/zookeeper/data
+          mountPath: /var/lib/zookeeper
       volumes:
-      - name: config
+      - name: configmap
         configMap:
           name: zookeeper-config
+      - name: config
+        emptyDir: {}
           
   volumeClaimTemplates:
   - metadata:
