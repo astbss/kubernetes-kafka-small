@@ -1,4 +1,5 @@
 # mkdir -p /var/kafka/broker ; mkdir -p /var/kafka/zookeeper ; chmod -R 777 /var/kafka
+# kubectl apply -f 50kafka.yml
 
 apiVersion: apps/v1
 kind: StatefulSet
@@ -87,14 +88,14 @@ spec:
           mountPath: /etc/kafka
         - name: data
           mountPath: /var/lib/kafka/data
-    volumes:
-          - name: configmap
-            configMap:
-              name: broker-config
-          - name: config
-            emptyDir: {}
-          - name: extensions
-            emptyDir: {}
+      volumes:
+      - name: configmap
+        configMap:
+          name: broker-config
+      - name: config
+        emptyDir: {}
+      - name: extensions
+        emptyDir: {}
   volumeClaimTemplates:
   - metadata:
       name: data
