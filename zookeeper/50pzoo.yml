@@ -29,7 +29,7 @@ spec:
       initContainers:
       - name: init-config
         image: solsson/kafka-initutils@sha256:2cdb90ea514194d541c7b869ac15d2d530ca64889f56e270161fe4e5c3d076ea
-        command: ['/bin/bash', '/etc/kafka/init.sh']
+        command: ['/bin/bash', '/etc/kafka-configmap/init.sh']
         volumeMounts:
         - name: configmap
           mountPath: /etc/kafka-configmap        
