@@ -83,3 +83,8 @@ spec:
         hostPath:
           path: /var/kafka/zookeeper       
 
+      volumes:
+      - name: config
+        hostPath:
+          path: /var/kafka/pzoo_etc_kafka       
+
