@@ -1,3 +1,5 @@
+# kubectl apply -f PersistentVolume-pzoo.yml
+
 apiVersion: v1
 kind: PersistentVolume
 metadata:

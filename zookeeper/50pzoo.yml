@@ -1,4 +1,5 @@
 # mkdir -p /var/kafka/broker ; mkdir -p /var/kafka/zookeeper ; chmod -R 777 /var/kafka
+# kubectl apply -f zookeeper/50pzoo.yml
 
 apiVersion: apps/v1
 kind: StatefulSet
