@@ -100,8 +100,11 @@ spec:
   - metadata:
       name: databroker
     spec:
-      accessModes: [ "ReadWriteOnce" ]
+      accessModes:
+      - ReadWriteOnce
+      storageClassName: local-storage
       resources:
         requests:
-          storage: 20Gi      
+          storage: 10Gi
+          
 
