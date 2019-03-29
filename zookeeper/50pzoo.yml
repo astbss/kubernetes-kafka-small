@@ -1,4 +1,5 @@
 # mkdir -p /var/kafka/broker ; mkdir -p /var/kafka/zookeeper ; chmod -R 777 /var/kafka
+# kubectl --namespace=kafka delete statefulsets pzoo
 # kubectl apply -f zookeeper/50pzoo.yml
 
 apiVersion: apps/v1
